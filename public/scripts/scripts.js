@@ -30,7 +30,7 @@ $('#target').click(function() {
 $(window).scroll(function() {
     // use the value from $(window).scrollTop();
     var pixels_scrolled = $(window).scrollTop();
-    console.log(pixels_scrolled); 
+    // console.log(pixels_scrolled); 
 		$('.pixels').html(pixels_scrolled); 
 
 		

@@ -73,10 +73,10 @@
   <div class="pixels"></div>
   
   
-  <div class="video_room">
+  <!-- <div class="video_room">
     <li><iframe src="http://player.vimeo.com/video/21965821?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><p><a href="http://vimeo.com/21965821">Tycho live visuals test footage</a> from <a href="http://vimeo.com/iso50">ISO50</a> on <a href="http://vimeo.com">Vimeo</a>.</p></li>
     <li><iframe src="http://player.vimeo.com/video/36167539?color=ff9933" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><p><a href="http://vimeo.com/36167539">M.I.A, Bad Girls</a> from <a href="http://vimeo.com/gavras">ROMAIN-GAVRAS</a> on <a href="http://vimeo.com">Vimeo</a>.</p></li>
-  </div>  
+  </div>   -->
   
   
   
@@ -166,7 +166,7 @@ $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?
       );
     });
   </script>
-      <div id="tweet_container"></div>
+      <!-- <div id="tweet_container"></div> -->
       
       
       
@@ -180,14 +180,40 @@ $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?
       var url='http://api.twitter.com/1/statuses/user_timeline/'+username+'.'+format+'?callback=?'; // make the url
 
       	$.getJSON(url,function(tweet){ // get the tweets
-      		$("#last-tweet").html(tweet[0].text); // get the first tweet in the response and place it inside the div
+      		$("#last-tweet1").html(tweet[0].text); // get the first tweet in the response and place it inside the div
       	});
       	
       </script>
-      <div id="last-tweet"></div>
+      <script>
+      
+      var username='jenstad'; // set user name
+      var format='json'; // set format, you really don't have an option on this one
+      var url='http://api.twitter.com/1/statuses/user_timeline/'+username+'.'+format+'?callback=?'; // make the url
+
+      // console.log(url);
+
+      	$.getJSON(url,function(tweet){ // get the tweets
+      		$("#last-tweet2").html(tweet[0].text); // get the first tweet in the response and place it inside the div
+      	});
+      	
+      </script>
+      <script>
+      
+      var username='billehfrench'; // set user name
+      var format='json'; // set format, you really don't have an option on this one
+      var url='http://api.twitter.com/1/statuses/user_timeline/'+username+'.'+format+'?callback=?'; // make the url
+
+      	$.getJSON(url,function(tweet){ // get the tweets
+      		$("#last-tweet3").html(tweet[0].text); // get the first tweet in the response and place it inside the div
+      	});
+      	
+      </script>
+      <div id="last-tweet1"></div>
+      <div id="last-tweet2"></div>
+      <div style="padding-bottom: 500px;" id="last-tweet3"></div>
       
       
-      
+
       
       <script>
       
@@ -202,6 +228,45 @@ $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?
     
     
     
+    
+    	
+    
+    
+    
+    <script>
+    // Init the page once the DOM has loaded.
+    $( InitPage );
+
+
+    // Init the page.
+    function InitPage(){
+      // Get a refernce to the OL list element.
+      var jList = $( "#list_of_tweets" );
+
+      // Create our test array.
+      var twitterHandles = [ "jenstad", "twahlin", "billehfrench" ];
+
+      // Loop over each value in the array.
+      $.each(
+        twitterHandles,
+        function( intIndex, individual_handle ){
+
+          // Create a new LI HTML element out of the
+          // current value (in the iteration) and then
+          // add this value to the list.
+          // $.getJSON(url,function(tweet){ $("#last-tweet2").html(tweet[0].text);});
+          console.log(individual_handle);
+          console.log('http://api.twitter.com/1/statuses/user_timeline/' + individual_handle + '.json?callback=?');
+          jList.append(
+            $( '<li class="'+ individual_handle +'">' + individual_handle + '</li>' )
+          );
+        }
+      );
+
+    }
+    </script>
+    
+    <ol id="list_of_tweets"></ol>
     
 
 
